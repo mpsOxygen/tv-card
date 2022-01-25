@@ -10,7 +10,7 @@ mdiArrowLeft,
 mdiVideoInputHdmi,
 mdiHome,
 mdiArrowUp,
-mdiTelevisionGuide,
+mdiCog,
 mdiArrowDown,
 mdiChevronUp,
 mdiChevronLeft,
@@ -167,7 +167,7 @@ class TVCardServices extends LitElement {
 
           ${
             this._config.channelup ||
-            this._config.info ||
+            this._config.settings ||
             this._config.channeldown
               ? html`
                   <div class="row">
@@ -182,13 +182,13 @@ class TVCardServices extends LitElement {
                           ></ha-icon-button>
                         `
                       : emptyButton}
-                    ${this._config.info
+                    ${this._config.settings
                       ? html`
                           <ha-icon-button
-                            .action="${"info"}"
+                            .action="${"settings"}"
                             @click="${this.handleActionClick}"
-                            icon="mdi:television-guide"
-                            .path=${mdiTelevisionGuide}
+                            icon="mdi:cog"
+                            .path=${mdiCog}
                             title="Guide"
                           ></ha-icon-button>
                         `
@@ -429,7 +429,7 @@ class TVCardServices extends LitElement {
       "volume_mute",
       "back",
       "source",
-      "info",
+      "settings",
       "home",
       "channelup",
       "channeldown",
