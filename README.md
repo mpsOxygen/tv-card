@@ -29,7 +29,7 @@
 | power_on | `service` | **Optional, Exclusive**| service to call when power_on button pressed. Only enabled if no `power` defined.
 | power_off | `service` | **Optional, Exclusive**| service to call when power_off button pressed. Only enabled if no `power` defined.
 | back | `service` | **Optional**| service to call when back button pressed
-| info        | `service` | **Optional**| service to call when info button pressed
+| settings        | `service` | **Optional**| service to call when settings button pressed
 | home | `service` | **Optional**| service to call when home button pressed
 | up | `service` | **Optional**| service to call when up button pressed
 | left | `service` | **Optional**| service to call when left button pressed
@@ -77,6 +77,123 @@ Add a custom element in your `ui-lovelace.yaml`
 ```
 
 ### Example 1:
+
+This is a card made to work with Sony Bravia TV using the [home assistant Bravia integration](https://www.home-assistant.io/integrations/braviatv/).
+
+```yaml
+type: grid
+square: false
+columns: 1
+cards:
+  - type: custom:tv-card
+    name: Livingroom TV
+    tv: true
+    entity: remote.sony_bravia_tv
+    power:
+      service: remote.send_command
+      service_data:
+        command: TvPower
+        device_id: 5b1375b2591abd267744257165053655
+    home:
+      service: remote.send_command
+      service_data:
+        command: Home
+        device_id: 5b1375b2591abd267744257165053655
+    up:
+      service: remote.send_command
+      service_data:
+        command: Up
+        device_id: 5b1375b2591abd267744257165053655
+    down:
+      service: remote.send_command
+      service_data:
+        command: Down
+        device_id: 5b1375b2591abd267744257165053655
+    right:
+      service: remote.send_command
+      service_data:
+        command: Right
+        device_id: 5b1375b2591abd267744257165053655
+    left:
+      service: remote.send_command
+      service_data:
+        command: Left
+        device_id: 5b1375b2591abd267744257165053655
+    select:
+      service: remote.send_command
+      service_data:
+        command: Confirm
+        device_id: 5b1375b2591abd267744257165053655
+    back:
+      service: remote.send_command
+      service_data:
+        command: Exit
+        device_id: 5b1375b2591abd267744257165053655
+    play:
+      service: remote.send_command
+      service_data:
+        command: Play
+        device_id: 5b1375b2591abd267744257165053655
+    forward:
+      service: remote.send_command
+      service_data:
+        command: Forward
+        device_id: 5b1375b2591abd267744257165053655
+    reverse:
+      service: remote.send_command
+      service_data:
+        command: Rewind
+        device_id: 5b1375b2591abd267744257165053655
+    source:
+      service: remote.send_command
+      service_data:
+        command: Input
+        device_id: 5b1375b2591abd267744257165053655
+    channelup:
+      service: remote.send_command
+      service_data:
+        command: ChannelUp
+        device_id: 5b1375b2591abd267744257165053655
+    channeldown:
+      service: remote.send_command
+      service_data:
+        command: ChannelDown
+        device_id: 5b1375b2591abd267744257165053655
+    volume_up:
+      service: remote.send_command
+      service_data:
+        command: VolumeUp
+        device_id: 5b1375b2591abd267744257165053655
+    volume_down:
+      service: remote.send_command
+      service_data:
+        command: VolumeDown
+        device_id: 5b1375b2591abd267744257165053655
+    volume_mute:
+      service: remote.send_command
+      service_data:
+        command: Mute
+        device_id: 5b1375b2591abd267744257165053655
+    netflix:
+      service: remote.send_command
+      service_data:
+        command: Netflix
+        device_id: 5b1375b2591abd267744257165053655
+    youtube:
+      service: remote.send_command
+      service_data:
+        command: YouTube
+        device_id: 5b1375b2591abd267744257165053655
+    info:
+      service: remote.send_command
+      service_data:
+        command: Options
+        device_id: 5b1375b2591abd267744257165053655
+  - type: media-control
+    entity: media_player.sony_bravia_tv
+```
+
+### Example 2:
 
 You can use the card in combination with the [browser mod integration](https://github.com/thomasloven/hass-browser_mod).
 That means that you can create an input_boolean which opens a popup when you click its icon:
